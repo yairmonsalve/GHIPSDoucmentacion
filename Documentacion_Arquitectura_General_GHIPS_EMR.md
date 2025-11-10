@@ -1,11 +1,13 @@
 # ARQUITECTURA DEL EMR GHIPS
 ## Visión integral de componentes, datos, analítica y capacidades emergentes
 
-**Fecha:** 10 de Noviembre de 2025  
+**Fecha:** 10 de noviembre de 2025  
 **Sistema:** GHIPS - Gestión Hospitalaria Integral de Procesos de Salud  
 **Tipo:** Electronic Medical Record (EMR) / Sistema de Información Hospitalaria
 
 ---
+
+> Desarrollado por el GRUPO DESARROLLO GHIPS. GHIPS es una marca registrada. © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
 
 ## 1. ARQUITECTURA Y COMPONENTES DE APLICACIÓN DEL EMR
 

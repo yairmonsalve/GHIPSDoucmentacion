@@ -1,11 +1,13 @@
 # DOCUMENTACIÓN ARQUITECTÓNICA - SISTEMA EMR GHIPS
 ## Respuestas a Preguntas de Arquitectura de Solución
 
-**Fecha:** 10 de Noviembre de 2025  
+**Fecha:** 10 de noviembre de 2025  
 **Sistema:** GHIPS - Gestión Hospitalaria Integral de Procesos de Salud  
 **Tipo:** Electronic Medical Record (EMR) / Sistema de Información Hospitalaria
 
 ---
+ 
+> Desarrollado por el GRUPO DESARROLLO GHIPS. GHIPS es una marca registrada. © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
 
 ## 1. ARQUITECTURA Y COMPONENTES DE APLICACIÓN DEL EMR
 
@@ -1758,6 +1760,11 @@ Los casos de uso planificados representan una **evolución natural** del sistema
 
 ---
 
+## Aviso Legal y Propiedad Intelectual
+
+Este documento y el software descrito forman parte de la propiedad intelectual del **GRUPO DESARROLLO GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
+
 **Documento generado:** 10/11/2025  
 **Versión:** 1.0  
-**Arquitecto de Solución:** [Información del proyecto GHIPS]
+**Arquitecto de Solución:** [Información del proyecto GHIPS]  
+© 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.

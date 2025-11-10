@@ -1,11 +1,13 @@
 # INTEROPERABILIDAD CLÍNICA Y ADMINISTRATIVA - EMR GHIPS
 ## Visión integral de intercambio de información y monitoreo
 
-**Fecha:** 10 de Noviembre de 2025  
+**Fecha:** 10 de noviembre de 2025  
 **Sistema:** GHIPS - Gestión Hospitalaria Integral de Procesos de Salud  
 **Enfoque:** Integración clínica, administrativa y ecosistema externo
 
 ---
+
+> Desarrollado por el GRUPO DESARROLLO GHIPS. GHIPS es una marca registrada. © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
 
 ## 1. ARQUITECTURA Y FLUJOS DE INFORMACIÓN
 
@@ -164,6 +166,11 @@ graph TB
 
 ---
 
+## Aviso Legal y Propiedad Intelectual
+
+Este documento y el software descrito forman parte de la propiedad intelectual del **GRUPO DESARROLLO GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
+
 **Documento generado:** 10/11/2025  
 **Versión:** 1.0  
-**Responsable:** Arquitectura de Solución GHIPS
+**Responsable:** Arquitectura de Solución GHIPS  
+© 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.

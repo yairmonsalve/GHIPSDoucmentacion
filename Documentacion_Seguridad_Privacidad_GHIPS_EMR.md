@@ -1,11 +1,13 @@
 # SEGURIDAD Y PRIVACIDAD - EMR GHIPS
 ## Modelos de acceso, protección de datos y clasificación de información
 
-**Fecha:** 10 de Noviembre de 2025  
+**Fecha:** 10 de noviembre de 2025  
 **Sistema:** GHIPS - Gestión Hospitalaria Integral de Procesos de Salud  
 **Alcance:** Seguridad clínica, administrativa y técnica
 
 ---
+
+> Desarrollado por el GRUPO DESARROLLO GHIPS. GHIPS es una marca registrada. © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
 
 ## 1. GOBIERNO DE SEGURIDAD Y PRIVACIDAD
 
@@ -95,6 +97,11 @@
 
 ---
 
+## Aviso Legal y Propiedad Intelectual
+
+Este documento y el software descrito forman parte de la propiedad intelectual del **GRUPO DESARROLLO GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
+
 **Documento generado:** 10/11/2025  
 **Versión:** 1.0  
-**Responsable:** Oficina de Seguridad de la Información GHIPS
+**Responsable:** Oficina de Seguridad de la Información GHIPS  
+© 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
