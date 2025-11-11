@@ -26,11 +26,13 @@ npm start
 
 ## Características
 
-- Árbol de directorios (limitado a: Activos, Asistencial, FevRips, Financiero, PQRS, Auditoria)
-- Visualización de Markdown (Preview) y pestaña de Edición
-- Guardar cambios con PUT /api/file
-- Render server-side con /api/render
-- Búsqueda rápida por nombre de archivo en el panel izquierdo
+- **Árbol de directorios** (limitado a: Activos, Asistencial, FevRips, Financiero, PQRS, Auditoria)
+- **Visualización Markdown** con resaltado de sintaxis (highlight.js)
+- **Edición** con toolbar (Negrita, Itálica, Enlace, Código, H3)
+- **Búsqueda global** de texto en todos los documentos
+- **Exportar PDF** del archivo actual (botón en tabs)
+- **Exportar diagramas Mermaid** a PNG (botón en cada bloque ```mermaid)
+- **Guardar cambios** con validación de modificaciones
 
 ## Seguridad y límites
 

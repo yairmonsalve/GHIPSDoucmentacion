@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <title>GHIPS Docs Admin</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
   <style>
     body { margin:0; font-family: system-ui, Arial, sans-serif; display:flex; height:100vh; }
     #sidebar { width:300px; border-right:1px solid #ccc; overflow:auto; padding:0.75rem; background:#f7f9fb; }
     #main { flex:1; display:flex; flex-direction:column; }
-    #filePath { font-size:0.85rem; color:#555; margin:0.5rem 0; }
-    #tabs { display:flex; gap:0.5rem; padding:0.5rem; background:#eef2f5; }
+    #filePath { font-size:0.85rem; color:#555; margin:0.5rem 0; padding:0 0.5rem; }
+    #tabs { display:flex; gap:0.5rem; padding:0.5rem; background:#eef2f5; align-items:center; }
     .tab-btn { padding:0.4rem 0.8rem; border:1px solid #888; background:#fff; cursor:pointer; font-size:0.8rem; }
     .tab-btn.active { background:#1e88e5; color:#fff; }
     #editor, #preview { flex:1; width:100%; border:none; padding:1rem; overflow:auto; }
@@ -18,19 +20,34 @@
     ul.tree li { margin:2px 0; }
     .dir > span { font-weight:600; cursor:pointer; }
     .file { cursor:pointer; color:#1e88e5; }
-    .actions { padding:0.5rem; border-top:1px solid #ccc; background:#fafafa; display:flex; justify-content:space-between; }
-    button.save { background:#2e7d32; color:#fff; border:none; padding:0.5rem 1rem; cursor:pointer; }
-    button.save:disabled { opacity:0.4; cursor:not-allowed; }
+    .actions { padding:0.5rem; border-top:1px solid #ccc; background:#fafafa; display:flex; justify-content:space-between; align-items:center; }
+    button.save, button.export { background:#2e7d32; color:#fff; border:none; padding:0.5rem 1rem; cursor:pointer; margin-left:0.5rem; }
+    button.export { background:#ff6f00; }
+    button:disabled { opacity:0.4; cursor:not-allowed; }
     .status { font-size:0.75rem; color:#444; }
     .search-box { width:100%; padding:0.3rem 0.4rem; margin-bottom:0.5rem; font-size:0.85rem; }
     .hidden { display:none; }
     #preview h1,#preview h2,#preview h3 { border-bottom:1px solid #ddd; padding-bottom:4px; }
     #preview code { background:#eee; padding:2px 4px; border-radius:3px; font-size:0.85em; }
     #preview pre code { background:#272822; color:#f8f8f2; display:block; padding:0.75rem; }
+    .toolbar { padding:0.5rem; background:#e8eaf6; border-bottom:1px solid #ccc; display:none; }
+    .toolbar.active { display:flex; gap:0.5rem; }
+    .toolbar button { padding:0.3rem 0.6rem; font-size:0.75rem; background:#fff; border:1px solid #999; cursor:pointer; }
+    .search-global { margin-bottom:0.5rem; }
+    .search-global input { width:100%; padding:0.4rem; }
+    .search-results { font-size:0.75rem; margin-top:0.5rem; max-height:200px; overflow:auto; background:#fff; border:1px solid #ccc; padding:0.5rem; }
+    .search-result-item { cursor:pointer; padding:0.3rem; border-bottom:1px solid #eee; }
+    .search-result-item:hover { background:#e3f2fd; }
+    .mermaid-block { position:relative; margin:1rem 0; padding:0.5rem; background:#f9f9f9; border:1px solid #ddd; }
+    .mermaid-export-btn { position:absolute; top:0.5rem; right:0.5rem; background:#1e88e5; color:#fff; border:none; padding:0.3rem 0.6rem; cursor:pointer; font-size:0.7rem; }
   </style>
 </head>
 <body>
   <aside id="sidebar">
+    <div class="search-global">
+      <input id="searchGlobal" class="search-box" placeholder="Buscar en documentos..." />
+      <div id="searchResults" class="search-results hidden"></div>
+    </div>
     <input id="search" class="search-box" placeholder="Filtrar archivos..." />
     <div id="treeContainer">Cargando árbol...</div>
   </aside>
@@ -38,6 +55,15 @@
     <div id="tabs">
       <button class="tab-btn active" data-tab="preview">Preview</button>
       <button class="tab-btn" data-tab="edit">Editar</button>
+      <div style="flex:1;"></div>
+      <button class="export" id="exportPdfBtn" disabled>📄 Exportar PDF</button>
+    </div>
+    <div class="toolbar" id="toolbar">
+      <button onclick="insertMd('**','**')">Negrita</button>
+      <button onclick="insertMd('_','_')">Itálica</button>
+      <button onclick="insertMd('[','](url)')">Enlace</button>
+      <button onclick="insertMd('`','`')">Código</button>
+      <button onclick="insertMd('### ','')">H3</button>
     </div>
     <div id="filePath">Seleccione un archivo .md</div>
     <div id="contentContainer" style="flex:1; position:relative;">
@@ -56,15 +82,22 @@
       tree: () => fetch('/api/tree').then(r=>r.json()),
       file: (p) => fetch('/api/file?path=' + encodeURIComponent(p)).then(r=>r.json()),
       save: (p,c) => fetch('/api/file',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:p,content:c})}).then(r=>r.json()),
-      render: (c) => fetch('/api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:c})}).then(r=>r.json())
+      render: (c) => fetch('/api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:c})}).then(r=>r.json()),
+      search: (q) => fetch('/api/search?q=' + encodeURIComponent(q)).then(r=>r.json()),
+      exportPdf: (p) => fetch('/api/export/pdf',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:p})}).then(r=>r.json()),
+      mermaidExport: (code) => fetch('/api/mermaid/export',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})}).then(r=>r.json())
     };
     const treeContainer = document.getElementById('treeContainer');
     const editor = document.getElementById('editor');
     const preview = document.getElementById('preview');
     const filePathEl = document.getElementById('filePath');
     const saveBtn = document.getElementById('saveBtn');
+    const exportPdfBtn = document.getElementById('exportPdfBtn');
     const statusEl = document.getElementById('status');
     const searchBox = document.getElementById('search');
+    const searchGlobal = document.getElementById('searchGlobal');
+    const searchResults = document.getElementById('searchResults');
+    const toolbar = document.getElementById('toolbar');
     let currentPath = null;
     let currentContent = '';
 
@@ -102,13 +135,52 @@
       filePathEl.textContent = currentPath;
       editor.value = currentContent;
       saveBtn.disabled = true;
+      exportPdfBtn.disabled = false;
       await renderPreview();
       statusEl.textContent='Archivo cargado';
     }
 
     async function renderPreview(){
       const res = await api.render(editor.value);
-      if(res.ok){ preview.innerHTML = res.html; }
+      if(res.ok){ 
+        preview.innerHTML = res.html;
+        preview.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
+        addMermaidExportButtons();
+      }
+    }
+
+    function addMermaidExportButtons(){
+      preview.querySelectorAll('code.language-mermaid').forEach(block=>{
+        const code = block.textContent;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'mermaid-block';
+        wrapper.innerHTML = '<pre>' + block.parentElement.innerHTML + '</pre>';
+        const btn = document.createElement('button');
+        btn.className = 'mermaid-export-btn';
+        btn.textContent = '📊 Exportar PNG';
+        btn.onclick = async ()=>{
+          statusEl.textContent = 'Generando imagen Mermaid...';
+          const res = await api.mermaidExport(code);
+          if(res.ok){
+            window.open(res.imageUrl, '_blank');
+            statusEl.textContent = 'Imagen generada (abierta en nueva pestaña)';
+          } else {
+            statusEl.textContent = 'Error: ' + res.message;
+          }
+        };
+        wrapper.appendChild(btn);
+        block.parentElement.replaceWith(wrapper);
+      });
+    }
+
+    function insertMd(before, after){
+      const start = editor.selectionStart, end = editor.selectionEnd;
+      const text = editor.value;
+      const sel = text.substring(start, end);
+      editor.value = text.substring(0,start) + before + sel + after + text.substring(end);
+      editor.focus();
+      editor.selectionStart = editor.selectionEnd = start + before.length + sel.length;
+      saveBtn.disabled = (editor.value === currentContent);
     }
 
     editor.addEventListener('input',()=>{
@@ -123,17 +195,61 @@
       else { statusEl.textContent='Error al guardar: '+res.message; }
     });
 
+    exportPdfBtn.addEventListener('click', async ()=>{
+      if(!currentPath) return;
+      statusEl.textContent='Generando PDF...';
+      const res = await api.exportPdf(currentPath);
+      if(res.ok){ statusEl.textContent='PDF generado: '+res.pdfPath; }
+      else { statusEl.textContent='Error: '+res.message; }
+    });
+
     document.querySelectorAll('.tab-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
         document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
         const tab = btn.dataset.tab;
-        if(tab==='edit'){ editor.classList.remove('hidden'); preview.classList.add('hidden'); }
-        else { editor.classList.add('hidden'); preview.classList.remove('hidden'); renderPreview(); }
+        if(tab==='edit'){ 
+          editor.classList.remove('hidden'); 
+          preview.classList.add('hidden'); 
+          toolbar.classList.add('active');
+        } else { 
+          editor.classList.add('hidden'); 
+          preview.classList.remove('hidden'); 
+          toolbar.classList.remove('active');
+          renderPreview(); 
+        }
       });
     });
 
     searchBox.addEventListener('input',()=>filterTree(searchBox.value));
+
+    let searchTimeout;
+    searchGlobal.addEventListener('input',()=>{
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(async ()=>{
+        const q = searchGlobal.value.trim();
+        if(!q){ searchResults.classList.add('hidden'); return; }
+        statusEl.textContent = 'Buscando...';
+        const res = await api.search(q);
+        if(res.ok){
+          searchResults.innerHTML = '';
+          if(res.results.length){
+            res.results.forEach(r=>{
+              const div = document.createElement('div');
+              div.className='search-result-item';
+              div.innerHTML = '<strong>' + r.name + '</strong><br/>' + r.matches.map(m=>'L'+m.line+': '+m.text.substring(0,60)).join('<br/>');
+              div.onclick = ()=>{ openFile(r.path); searchResults.classList.add('hidden'); };
+              searchResults.appendChild(div);
+            });
+            searchResults.classList.remove('hidden');
+          } else {
+            searchResults.innerHTML = 'Sin resultados';
+            searchResults.classList.remove('hidden');
+          }
+          statusEl.textContent = 'Búsqueda completada';
+        }
+      }, 500);
+    });
 
     (async ()=>{
       const res = await api.tree();
