@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>GHIPS Docs Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { margin:0; font-family: system-ui, Arial, sans-serif; display:flex; height:100vh; }
+    #sidebar { width:300px; border-right:1px solid #ccc; overflow:auto; padding:0.75rem; background:#f7f9fb; }
+    #main { flex:1; display:flex; flex-direction:column; }
+    #filePath { font-size:0.85rem; color:#555; margin:0.5rem 0; }
+    #tabs { display:flex; gap:0.5rem; padding:0.5rem; background:#eef2f5; }
+    .tab-btn { padding:0.4rem 0.8rem; border:1px solid #888; background:#fff; cursor:pointer; font-size:0.8rem; }
+    .tab-btn.active { background:#1e88e5; color:#fff; }
+    #editor, #preview { flex:1; width:100%; border:none; padding:1rem; overflow:auto; }
+    #editor { font-family: Consolas, monospace; resize:none; }
+    ul.tree { list-style:none; padding-left:0.75rem; }
+    ul.tree li { margin:2px 0; }
+    .dir > span { font-weight:600; cursor:pointer; }
+    .file { cursor:pointer; color:#1e88e5; }
+    .actions { padding:0.5rem; border-top:1px solid #ccc; background:#fafafa; display:flex; justify-content:space-between; }
+    button.save { background:#2e7d32; color:#fff; border:none; padding:0.5rem 1rem; cursor:pointer; }
+    button.save:disabled { opacity:0.4; cursor:not-allowed; }
+    .status { font-size:0.75rem; color:#444; }
+    .search-box { width:100%; padding:0.3rem 0.4rem; margin-bottom:0.5rem; font-size:0.85rem; }
+    .hidden { display:none; }
+    #preview h1,#preview h2,#preview h3 { border-bottom:1px solid #ddd; padding-bottom:4px; }
+    #preview code { background:#eee; padding:2px 4px; border-radius:3px; font-size:0.85em; }
+    #preview pre code { background:#272822; color:#f8f8f2; display:block; padding:0.75rem; }
+  </style>
+</head>
+<body>
+  <aside id="sidebar">
+    <input id="search" class="search-box" placeholder="Filtrar archivos..." />
+    <div id="treeContainer">Cargando árbol...</div>
+  </aside>
+  <section id="main">
+    <div id="tabs">
+      <button class="tab-btn active" data-tab="preview">Preview</button>
+      <button class="tab-btn" data-tab="edit">Editar</button>
+    </div>
+    <div id="filePath">Seleccione un archivo .md</div>
+    <div id="contentContainer" style="flex:1; position:relative;">
+      <textarea id="editor" class="hidden"></textarea>
+      <div id="preview"></div>
+    </div>
+    <div class="actions">
+      <div class="status" id="status">Listo</div>
+      <div>
+        <button class="save" id="saveBtn" disabled>Guardar</button>
+      </div>
+    </div>
+  </section>
+  <script>
+    const api = {
+      tree: () => fetch('/api/tree').then(r=>r.json()),
+      file: (p) => fetch('/api/file?path=' + encodeURIComponent(p)).then(r=>r.json()),
+      save: (p,c) => fetch('/api/file',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:p,content:c})}).then(r=>r.json()),
+      render: (c) => fetch('/api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:c})}).then(r=>r.json())
+    };
+    const treeContainer = document.getElementById('treeContainer');
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+    const filePathEl = document.getElementById('filePath');
+    const saveBtn = document.getElementById('saveBtn');
+    const statusEl = document.getElementById('status');
+    const searchBox = document.getElementById('search');
+    let currentPath = null;
+    let currentContent = '';
+
+    function buildTree(nodes){
+      const ul = document.createElement('ul'); ul.className='tree';
+      nodes.forEach(n=>{
+        const li = document.createElement('li');
+        if(n.type==='dir'){
+          li.className='dir';
+          const span=document.createElement('span');
+          span.textContent='📁 '+n.name; span.onclick=()=>{ li.classList.toggle('open'); };
+          li.appendChild(span);
+          if(n.children && n.children.length){ li.appendChild(buildTree(n.children)); }
+        } else {
+          li.className='file'; li.textContent='📄 '+n.name;
+          li.onclick=()=>openFile(n.path);
+        }
+        ul.appendChild(li);
+      });
+      return ul;
+    }
+
+    function filterTree(term){
+      const t = term.toLowerCase();
+      treeContainer.querySelectorAll('li.file').forEach(li=>{
+        li.style.display = li.textContent.toLowerCase().includes(t)?'':'none';
+      });
+    }
+
+    async function openFile(p){
+      statusEl.textContent='Cargando '+p+'...';
+      const res = await api.file(p);
+      if(!res.ok){ statusEl.textContent='Error: '+res.message; return; }
+      currentPath = res.path; currentContent = res.content;
+      filePathEl.textContent = currentPath;
+      editor.value = currentContent;
+      saveBtn.disabled = true;
+      await renderPreview();
+      statusEl.textContent='Archivo cargado';
+    }
+
+    async function renderPreview(){
+      const res = await api.render(editor.value);
+      if(res.ok){ preview.innerHTML = res.html; }
+    }
+
+    editor.addEventListener('input',()=>{
+      saveBtn.disabled = (editor.value === currentContent);
+      renderPreview();
+    });
+    saveBtn.addEventListener('click', async ()=>{
+      if(!currentPath) return;
+      statusEl.textContent='Guardando...';
+      const res = await api.save(currentPath, editor.value);
+      if(res.ok){ currentContent = editor.value; saveBtn.disabled=true; statusEl.textContent='Guardado'; }
+      else { statusEl.textContent='Error al guardar: '+res.message; }
+    });
+
+    document.querySelectorAll('.tab-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        if(tab==='edit'){ editor.classList.remove('hidden'); preview.classList.add('hidden'); }
+        else { editor.classList.add('hidden'); preview.classList.remove('hidden'); renderPreview(); }
+      });
+    });
+
+    searchBox.addEventListener('input',()=>filterTree(searchBox.value));
+
+    (async ()=>{
+      const res = await api.tree();
+      if(!res.ok){ treeContainer.textContent = 'Error cargando árbol'; return; }
+      treeContainer.innerHTML='';
+      treeContainer.appendChild(buildTree(res.roots));
+    })();
+  </script>
+</body>
+</html>
