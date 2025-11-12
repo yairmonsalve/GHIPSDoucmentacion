@@ -386,19 +386,26 @@ graph TB
 ### 10.2 Planificados / Roadmap
 
 ```mermaid
-timeline
-    title Roadmap Tecnologías Emergentes GHIPS
-    section Fase 1: Fundamentos IA/ML (6-12 meses)
-        Modelos Predictivos : ML.NET
-        NLP Básico : Text Analytics
-    section Fase 2: IA Avanzada (12-18 meses)
-        Computer Vision : Azure Cognitive Services
-        Chatbots IA : Azure Bot Framework
-    section Fase 3: IoT Médico (18-24 meses)
-        IoT Hub : Monitoreo remoto
-        Wearables : Telemetría continua
-    section Fase 4: Blockchain (24-30 meses)
-        Blockchain HC : Consent y auditoría inmutable
+graph TD
+    A[Fase 1: Fundamentos IA/ML<br/>(6-12 meses)] --> B[Fase 2: IA Avanzada<br/>(12-18 meses)]
+    B --> C[Fase 3: IoT Médico<br/>(18-24 meses)]
+    C --> D[Fase 4: Blockchain<br/>(24-30 meses)]
+
+    A1[Modelos Predictivos<br/>ML.NET]
+    A2[NLP Básico<br/>Text Analytics]
+    B1[Computer Vision<br/>Azure Cognitive Services]
+    B2[Chatbots IA<br/>Azure Bot Framework]
+    C1[IoT Hub<br/>Monitoreo remoto]
+    C2[Wearables<br/>Telemetría continua]
+    D1[Blockchain HC<br/>Consent y auditoría inmutable]
+
+    A --> A1
+    A --> A2
+    B --> B1
+    B --> B2
+    C --> C1
+    C --> C2
+    D --> D1
 ```
 
 ---
