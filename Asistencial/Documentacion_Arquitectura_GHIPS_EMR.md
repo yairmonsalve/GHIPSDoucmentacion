@@ -1766,5 +1766,5 @@ Este documento y el software descrito forman parte de la propiedad intelectual d
 
 **Documento generado:** 10/11/2025  
 **Versión:** 1.0  
-**Arquitecto de Solución:** [Información del proyecto GHIPS]  
+**Responsable:** Oficina de Arquitectura y Operaciones GHIPS  
 © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.

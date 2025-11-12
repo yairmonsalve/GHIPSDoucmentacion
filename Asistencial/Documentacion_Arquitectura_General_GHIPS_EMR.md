@@ -405,4 +405,5 @@ timeline
 
 **Documento generado:** 10/11/2025  
 **Versión:** 1.0  
-**Responsable:** Arquitectura de Solución GHIPS
+**Responsable:** Oficina de Arquitectura y Operaciones GHIPS  
+© 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.

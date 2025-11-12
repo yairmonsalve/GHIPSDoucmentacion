@@ -27,5 +27,6 @@
 Este documento y el software descrito forman parte de la propiedad intelectual del **GRUPO DESARROLLO GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
 
 **Documento generado:** 10/11/2025  
-**Versión:** 0.1 (borrador inicial)  
+**Versión:** 0.1  
+**Responsable:** Oficina de Arquitectura y Operaciones GHIPS  
 © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
