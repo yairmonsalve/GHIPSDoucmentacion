@@ -1,4 +1,5 @@
 # ARQUITECTURA DEL EMR GHIPS
+[[ _TOC_ ]]
 ## Visión integral de componentes, datos, analítica y capacidades emergentes
 
 **Fecha:** 10 de noviembre de 2025  
@@ -7,7 +8,7 @@
 
 ---
 
-> Desarrollado por el GRUPO DESARROLLO GHIPS. GHIPS es una marca registrada. © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
+> Desarrollado por el TEAM GHIPS. GHIPS es una marca registrada. © 2025 GHIPS. Todos los derechos reservados.
 
 ## 1. ARQUITECTURA Y COMPONENTES DE APLICACIÓN DEL EMR
 
@@ -17,9 +18,8 @@
 graph TB
     subgraph "CAPA DE PRESENTACIÓN"
         Web[Ips.Gestion.Ghips.Web<br/>ASP.NET WebForms]
-        WebLocal[Ips.Gestion.Ghips.WebLocal<br/>Aplicación Interna]
-        Presentacion[libGHIPS.Presentacion<br/>Componentes UI]
-    end
+  
+      end
 
     subgraph "CAPA DE SERVICIOS"
         ServiciosApi[Ips.Gestion.Ghips.ServiciosApis<br/>REST APIs]

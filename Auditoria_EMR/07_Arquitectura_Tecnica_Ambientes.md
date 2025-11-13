@@ -1,4 +1,5 @@
 # Arquitectura Técnica y Ambientes Requeridos
+[[ _TOC_ ]]
 
 Fecha: 12/11/2025
 

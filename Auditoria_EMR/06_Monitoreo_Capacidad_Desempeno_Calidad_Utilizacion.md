@@ -1,4 +1,5 @@
 # Indicadores y Métricas: Monitoreo, Capacidad, Desempeño, Calidad y Utilización
+[[ _TOC_ ]]
 
 Fecha: 12/11/2025
 

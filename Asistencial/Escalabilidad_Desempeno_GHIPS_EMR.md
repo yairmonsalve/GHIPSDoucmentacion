@@ -1,4 +1,5 @@
 # ESCALABILIDAD Y DESEMPEÑO - EMR GHIPS
+[[ _TOC_ ]]
 ## Estrategias de capacidad, resiliencia y monitoreo continuo
 
 **Fecha:** 10 de noviembre de 2025  
@@ -54,9 +55,8 @@
 ## 3. ESTRATEGIAS DE ESCALAMIENTO
 
 ### 3.1 Escalamiento Horizontal
-- **Web/App Layer:** Web farm con balanceo de carga (ARR/Load Balancer); sesiones gestionadas en SQL Server o Redis cuando aplica.
+- **Web/App Layer:** Web farm con balanceo de carga (ARR/Load Balancer); sesiones gestionadas en SQL Server .
 - **Servicios Windows:** Distribución de procesos batch entre AppSrv1 y AppSrv2; posibilidad de añadir nodos según demanda.
-- **SignalR:** Backplane en SQL Server para sincronizar mensajes entre nodos.
 
 ### 3.2 Escalamiento Vertical
 - Incremento de vCPU y RAM en App Servers (de 8 a 16 vCPU, 32 GB RAM recomendado para picos).  
@@ -124,4 +124,4 @@ Este documento y el software descrito forman parte de la propiedad intelectual d
 **Documento generado:** 10/11/2025  
 **Versión:** 1.0  
 **Responsable:** Oficina de Arquitectura y Operaciones GHIPS  
-© 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
+© 2025 GHIPS. Todos los derechos reservados.

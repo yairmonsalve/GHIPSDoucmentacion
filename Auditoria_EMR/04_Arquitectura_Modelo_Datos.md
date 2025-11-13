@@ -1,4 +1,5 @@
 # Arquitectura y Modelo de Datos
+[[ _TOC_ ]]
 
 Fecha: 12/11/2025
 

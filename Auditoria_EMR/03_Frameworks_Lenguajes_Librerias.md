@@ -1,4 +1,5 @@
 # Especificación de Frameworks, Lenguajes y Librerías
+[[ _TOC_ ]]
 
 Fecha: 12/11/2025
 

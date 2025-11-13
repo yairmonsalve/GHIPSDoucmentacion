@@ -1,4 +1,5 @@
 # Herramientas y Módulos de Analítica (Reportes, BI, Dashboards)
+[[ _TOC_ ]]
 
 Fecha: 12/11/2025
 

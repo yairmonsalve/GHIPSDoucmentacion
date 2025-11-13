@@ -1,4 +1,5 @@
 # Casos de Uso con Tecnologías Emergentes (Implementados y Planificados)
+[[ _TOC_ ]]
 
 Fecha: 12/11/2025
 

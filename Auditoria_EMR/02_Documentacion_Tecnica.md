@@ -1,4 +1,5 @@
 # Documentación Técnica de la Solución EMR GHIPS
+[[ _TOC_ ]]
 
 Fecha: 12/11/2025
 

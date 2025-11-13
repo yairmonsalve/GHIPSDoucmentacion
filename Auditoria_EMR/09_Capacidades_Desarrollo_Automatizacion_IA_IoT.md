@@ -1,4 +1,5 @@
 # Capacidades en Desarrollo, Automatización, Analítica Avanzada, IA e IoT
+[[ _TOC_ ]]
 
 Fecha: 12/11/2025
 

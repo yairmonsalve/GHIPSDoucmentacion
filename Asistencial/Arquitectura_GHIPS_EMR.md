@@ -1,4 +1,5 @@
 # DOCUMENTACIÓN ARQUITECTÓNICA - SISTEMA EMR GHIPS
+[[ _TOC_ ]]
 ## Respuestas a Preguntas de Arquitectura de Solución
 
 **Fecha:** 10 de noviembre de 2025  
