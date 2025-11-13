@@ -13,17 +13,17 @@ Fecha: 12/11/2025
 ## Planificados (Roadmap)
 ```mermaid
 graph TD
-    A[Fase 1: Fundamentos IA/ML<br/>(6-12 meses)] --> B[Fase 2: IA Avanzada<br/>(12-18 meses)]
-    B --> C[Fase 3: IoT Médico<br/>(18-24 meses)]
-    C --> D[Fase 4: Blockchain<br/>(24-30 meses)]
+    A["Fase 1: Fundamentos IA/ML (6-12 meses)"] --> B["Fase 2: IA Avanzada (12-18 meses)"]
+    B --> C["Fase 3: IoT Médico (18-24 meses)"]
+    C --> D["Fase 4: Blockchain (24-30 meses)"]
 
-    A1[Modelos Predictivos<br/>ML.NET]
-    A2[NLP Básico<br/>Text Analytics]
-    B1[Computer Vision<br/>Azure Cognitive Services]
-    B2[Chatbots IA<br/>Azure Bot Framework]
-    C1[IoT Hub<br/>Monitoreo remoto]
-    C2[Wearables<br/>Telemetría continua]
-    D1[Blockchain HC<br/>Consent y auditoría inmutable]
+    A1["Modelos Predictivos - ML.NET"]
+    A2["NLP Básico - Text Analytics"]
+    B1["Computer Vision - Azure Cognitive Services"]
+    B2["Chatbots IA - Azure Bot Framework"]
+    C1["IoT Hub - Monitoreo remoto"]
+    C2["Wearables - Telemetría continua"]
+    D1["Blockchain HC - Consent y auditoría inmutable"]
 
     A --> A1
     A --> A2
