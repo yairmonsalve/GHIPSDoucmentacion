@@ -6,6 +6,14 @@ Fecha: 12/11/2025
 ## Visión general
 El EMR GHIPS es una plataforma N‑capa con servicios REST/WCF/SOAP, núcleo de negocio central y base de datos SQL Server con más de 42 esquemas clínicos y administrativos. Incluye servicios Windows para procesos batch y trazabilidad, además de integraciones con Azure AD, Azure Storage, Power BI y plataformas externas (telemedicina, MIPRES, EPS).
 
+
+Diagramas
+Todos los documentos incluyen diagramas Mermaid que pueden visualizarse:
+
+En VS Code: Instalar extensión "Markdown Preview Mermaid Support"
+En Navegador: https://mermaid.live  (copiar y pegar código)
+En GitHub: Los archivos .md renderizan Mermaid automáticamente
+
 ## Diagrama lógico (alto nivel)
 ```mermaid
 graph TB

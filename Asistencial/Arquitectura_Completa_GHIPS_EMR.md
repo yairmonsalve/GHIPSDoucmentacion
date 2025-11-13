@@ -91,9 +91,9 @@ Referencias: secciones de Roadmap en los documentos de Arquitectura e Interopera
 
 ## Aviso Legal y Propiedad Intelectual
 
-Este documento y el software descrito forman parte de la propiedad intelectual de **TEAM GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
+Este documento y el software descrito forman parte de la propiedad intelectual del **GRUPO DESARROLLO GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
 
 **Documento generado:** 10/11/2025  
 **Versión:** 1.0  
-**Responsable:** Oficina de Arquitectura y Operaciones TEAM GHIPS  
- © 2025 GHIPS. Todos los derechos reservados.
+**Responsable:** Oficina de Arquitectura y Operaciones GHIPS  
+© 2025 GHIPS. Todos los derechos reservados.

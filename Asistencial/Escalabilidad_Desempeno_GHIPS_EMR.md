@@ -8,6 +8,13 @@
 
 ---
 
+Diagramas
+Todos los documentos incluyen diagramas Mermaid que pueden visualizarse:
+
+En VS Code: Instalar extensión "Markdown Preview Mermaid Support"
+En Navegador: https://mermaid.live  (copiar y pegar código)
+En GitHub: Los archivos .md renderizan Mermaid automáticamente
+
 > Desarrollado por el GRUPO DESARROLLO GHIPS. GHIPS es una marca registrada. © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
 
 ## 1. RESULTADOS DE PRUEBAS DE CARGA Y RENDIMIENTO
@@ -18,7 +25,6 @@
 | Estrés | Incremento gradual hasta 2,500 usuarios simultáneos | Latencia pico 780 ms, throttling controlado en APIs, degradación no crítica | ⚠️ Requiere escalar App Servers para >2,000 usuarios |
 | Batch nocturno | Procesos RIPS + envío medicamentos + reportes | Tiempo total 95 min, consumo CPU 40% en servicios Windows | ✅ En ventana programada (<120 min) |
 | Telemedicina (HL7/FHIR) | 10,000 mensajes/hora | Throughput estable, cola de reintentos < 1% | ✅ Capacidad suficiente |
-| SignalR | 5,000 conexiones persistentes | Latencia notificación 200 ms promedio | ✅ Cumple objetivo (<300 ms) |
 
 **Notas:**
 - Pruebas ejecutadas en ambientes `Integracion` y `Release`.  

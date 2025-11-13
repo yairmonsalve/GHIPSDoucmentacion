@@ -7,6 +7,12 @@
 **Tipo:** Electronic Medical Record (EMR) / Sistema de Información Hospitalaria
 
 ---
+Diagramas
+Todos los documentos incluyen diagramas Mermaid que pueden visualizarse:
+
+En VS Code: Instalar extensión "Markdown Preview Mermaid Support"
+En Navegador: https://mermaid.live  (copiar y pegar código)
+En GitHub: Los archivos .md renderizan Mermaid automáticamente
 
 > Desarrollado por el TEAM GHIPS. GHIPS es una marca registrada. © 2025 GHIPS. Todos los derechos reservados.
 
@@ -410,7 +416,11 @@ graph TD
 
 ---
 
+## Aviso Legal y Propiedad Intelectual
+
+Este documento y el software descrito forman parte de la propiedad intelectual del **GRUPO DESARROLLO GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
+
 **Documento generado:** 10/11/2025  
 **Versión:** 1.0  
 **Responsable:** Oficina de Arquitectura y Operaciones GHIPS  
-© 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
+© 2025 GHIPS. Todos los derechos reservados.

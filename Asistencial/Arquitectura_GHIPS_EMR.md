@@ -6,6 +6,13 @@
 **Sistema:** GHIPS - Gestión Hospitalaria Integral de Procesos de Salud  
 **Tipo:** Electronic Medical Record (EMR) / Sistema de Información Hospitalaria
 
+Diagramas
+Todos los documentos incluyen diagramas Mermaid que pueden visualizarse:
+
+En VS Code: Instalar extensión "Markdown Preview Mermaid Support"
+En Navegador: https://mermaid.live  (copiar y pegar código)
+En GitHub: Los archivos .md renderizan Mermaid automáticamente
+
 ---
  
 > Desarrollado por el GRUPO DESARROLLO GHIPS. GHIPS es una marca registrada. © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.

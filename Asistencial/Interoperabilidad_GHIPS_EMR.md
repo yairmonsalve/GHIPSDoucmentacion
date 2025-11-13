@@ -2,13 +2,21 @@
 [[ _TOC_ ]]
 ## Visión integral de intercambio de información y monitoreo
 
-**Fecha:** 10 de noviembre de 2025  
+**Fecha:** Noviembre de 2025  
 **Sistema:** GHIPS - Gestión Hospitalaria Integral de Procesos de Salud  
 **Enfoque:** Integración clínica, administrativa y ecosistema externo
 
 ---
 
 > Desarrollado por el GRUPO DESARROLLO GHIPS. GHIPS es una marca registrada. © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.
+
+Diagramas
+Todos los documentos incluyen diagramas Mermaid que pueden visualizarse:
+
+En VS Code: Instalar extensión "Markdown Preview Mermaid Support"
+En Navegador: https://mermaid.live  (copiar y pegar código)
+En GitHub: Los archivos .md renderizan Mermaid automáticamente
+
 
 ## 1. ARQUITECTURA Y FLUJOS DE INFORMACIÓN
 
@@ -18,7 +26,6 @@
 graph TB
     subgraph "FUENTES INTERNAS"
         Web[Ips.Gestion.Ghips.Web<br/>WebForms]
-        WebLocal[Ips.Gestion.Ghips.WebLocal]
         WinSvc[Servicios Windows<br/>Batch/Realtime]
         Mobile[Apps Clientes<br/>REST/SignalR]
     end
@@ -171,7 +178,7 @@ graph TB
 
 Este documento y el software descrito forman parte de la propiedad intelectual del **GRUPO DESARROLLO GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
 
-**Documento generado:** 10/11/2025  
+**Documento generado:** 11/2025  
 **Versión:** 1.0  
 **Responsable:** Oficina de Arquitectura y Operaciones GHIPS  
 © 2025 GHIPS. Todos los derechos reservados.
