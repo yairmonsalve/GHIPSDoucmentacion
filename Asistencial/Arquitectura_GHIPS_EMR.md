@@ -2,7 +2,7 @@
 [[ _TOC_ ]]
 ## Respuestas a Preguntas de Arquitectura de Solución
 
-**Fecha:** 10 de noviembre de 2025  
+**Fecha:** Noviembre de 2025  
 **Sistema:** GHIPS - Gestión Hospitalaria Integral de Procesos de Salud  
 **Tipo:** Electronic Medical Record (EMR) / Sistema de Información Hospitalaria
 
@@ -432,7 +432,7 @@ graph TB
 ```
 
 ### 4.2 Motor de Base de Datos
-- **Microsoft SQL Server** (2012+)
+- **Microsoft SQL Server** (2019+)
 - **Provider:** SQL_Latin1_General_CP1_CI_AS (Collation)
 - **Esquema:** Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider
 
@@ -1772,7 +1772,7 @@ Los casos de uso planificados representan una **evolución natural** del sistema
 
 Este documento y el software descrito forman parte de la propiedad intelectual del **GRUPO DESARROLLO GHIPS**. GHIPS es una **marca registrada**. Queda prohibida su reproducción total o parcial, distribución, ingeniería inversa o divulgación sin autorización escrita. El acceso está restringido a instituciones y usuarios autorizados conforme contratos vigentes.
 
-**Documento generado:** 10/11/2025  
+**Documento generado:** Noviembre 2025  
 **Versión:** 1.0  
 **Responsable:** Oficina de Arquitectura y Operaciones GHIPS  
 © 2025 GRUPO DESARROLLO GHIPS. Todos los derechos reservados.

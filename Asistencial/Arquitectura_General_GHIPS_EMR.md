@@ -2,7 +2,7 @@
 [[ _TOC_ ]]
 ## Visión integral de componentes, datos, analítica y capacidades emergentes
 
-**Fecha:** 10 de noviembre de 2025  
+**Fecha:** Noviembre de 2025  
 **Sistema:** GHIPS - Gestión Hospitalaria Integral de Procesos de Salud  
 **Tipo:** Electronic Medical Record (EMR) / Sistema de Información Hospitalaria
 
