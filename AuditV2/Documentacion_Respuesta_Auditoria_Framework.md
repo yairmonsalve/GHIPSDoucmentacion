@@ -70,10 +70,26 @@
   - FevRips: tiempos de generación/validación y reintentos controlados en `FevRips.ServiceWorker`.
 - **Capacidad:** Usuarios concurrentes 1,000–2,500; pool SQL máx. 200; caché hit > 80%.
 - **Seguridad:** TLS 1.2+, Azure AD con MFA, cifrado en reposo, DMZ + segmentación, auditoría y trazabilidad.
-
 ---
 
 ## 5. Compromisos y Hitos (resumen)
+
+## 4.1 Evidencia de cliente moderno: GHIPS Lite (Angular)
+
+- **Objetivo:** cliente ligero que consume exclusivamente APIs REST del EMR (Ips.Gestion.Ghips.ServiciosApis), acelerando UX, movilidad y ciclo cerrado de medicamentos/órdenes.
+- **Proyecto:** ver [GhipsLite/GhipsAPP](GhipsLite/GhipsAPP) y su configuración Angular.
+- **Configuraciones clave:**
+  - Entornos: [GhipsLite/GhipsAPP/src/environments/environment.ts](GhipsLite/GhipsAPP/src/environments/environment.ts) y [GhipsLite/GhipsAPP/src/environments/environment.prod.ts](GhipsLite/GhipsAPP/src/environments/environment.prod.ts) con apiBaseUrl hacia ServiciosApis.
+  - PWA/Service Worker: [GhipsLite/GhipsAPP/ngsw-config.json](GhipsLite/GhipsAPP/ngsw-config.json) y [GhipsLite/GhipsAPP/src/manifest.webmanifest](GhipsLite/GhipsAPP/src/manifest.webmanifest).
+  - Seguridad de cabeceras: [GhipsLite/GhipsAPP/src/web.config](GhipsLite/GhipsAPP/src/web.config) (IIS) con hardening en headers.
+- **Servicios REST consumidos (ejemplos):**
+  - [GhipsLite/GhipsAPP/src/app/services/paciente.service.ts](GhipsLite/GhipsAPP/src/app/services/paciente.service.ts)
+  - [GhipsLite/GhipsAPP/src/app/services/medicamento.service.ts](GhipsLite/GhipsAPP/src/app/services/medicamento.service.ts)
+  - [GhipsLite/GhipsAPP/src/app/services/data.service.ts](GhipsLite/GhipsAPP/src/app/services/data.service.ts)
+- **Módulos funcionales relevantes:** hospitalización, historia clínica, toma de muestras, ciclo cerrado de medicación en [GhipsLite/GhipsAPP/src/app/moduls](GhipsLite/GhipsAPP/src/app/moduls).
+- **Build y despliegue (referencia):**
+  - Desarrollo: cd GhipsLite/GhipsAPP && npm install && npm run start
+  - Producción: npm run build y despliegue del artefacto en IIS con web.config y ngsw.json.
 
 | Hito | Plazo | Responsable | Resultado |
 |------|------:|-------------|-----------|
