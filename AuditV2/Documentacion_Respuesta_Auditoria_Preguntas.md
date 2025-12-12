@@ -43,6 +43,22 @@
 
 ---
 
+### 3.1 Evidencia práctica: GHIPS Lite (Angular)
+
+- **Proyecto cliente:** [GhipsLite/GhipsAPP](GhipsLite/GhipsAPP) con Angular, PWA y consumo exclusivo de REST.
+- **Servicios REST utilizados:**
+  - Pacientes: [GhipsLite/GhipsAPP/src/app/services/paciente.service.ts](GhipsLite/GhipsAPP/src/app/services/paciente.service.ts)
+  - Medicamentos: [GhipsLite/GhipsAPP/src/app/services/medicamento.service.ts](GhipsLite/GhipsAPP/src/app/services/medicamento.service.ts)
+  - Datos generales: [GhipsLite/GhipsAPP/src/app/services/data.service.ts](GhipsLite/GhipsAPP/src/app/services/data.service.ts)
+- **Configuración de endpoints:**
+  - Entornos: [GhipsLite/GhipsAPP/src/environments/environment.ts](GhipsLite/GhipsAPP/src/environments/environment.ts) y [GhipsLite/GhipsAPP/src/environments/environment.prod.ts](GhipsLite/GhipsAPP/src/environments/environment.prod.ts) con apiBaseUrl apuntando a Ips.Gestion.Ghips.ServiciosApis.
+- **PWA y seguridad:**
+  - Service Worker/Assets: [GhipsLite/GhipsAPP/ngsw-config.json](GhipsLite/GhipsAPP/ngsw-config.json) y [GhipsLite/GhipsAPP/src/manifest.webmanifest](GhipsLite/GhipsAPP/src/manifest.webmanifest).
+  - Hardening IIS/headers: [GhipsLite/GhipsAPP/src/web.config](GhipsLite/GhipsAPP/src/web.config).
+- **Build/Deploy de referencia:**
+  - Desarrollo: cd GhipsLite/GhipsAPP && npm install && npm run start
+  - Producción: npm run build y despliegue del dist bajo IIS con web.config.
+
 ## 4) Microservicios independientes
 
 - **Actualmente, el EMR opera mayormente como solución N-Tier.**
